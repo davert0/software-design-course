@@ -16,7 +16,21 @@ public class DbStorageDemo {
             throw new RuntimeException(e);
         }
         Storage storage = new DBStorage(connection);
-        storage.save("Opaopaopapapa");
-        System.out.println(storage.retrieve(1));
+        
+        storage.save("Первая строка данных");
+        storage.save("Вторая строка данных");
+        storage.save("Третья строка данных");
+        storage.save("Четвертая строка данных");
+        storage.save("Пятая строка данных");
+        
+
+        for (int i = 1; i <= 5; i++) {
+            String retrieved = storage.retrieve(i);
+            System.out.println("ID " + i + ": " + retrieved);
+        }
+        
+
+        String nonExistent = storage.retrieve(999);
+        System.out.println("ID 999: " + (nonExistent == null ? "не найдено" : nonExistent));
     }
 }
