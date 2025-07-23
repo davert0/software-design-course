@@ -8,10 +8,19 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
         this.balance = this.balance + amount;
     }
 
     public void withdraw(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (amount > this.balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
         this.balance = this.balance - amount;
     }
 
